@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster Pro | Smart Task Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&ampdisplay=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-circle circle1"></div>
+    <div class="background-circle circle2"></div>
+    <div class="background-circle circle3"></div>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-list-check"></i>
+            <h2>TaskMaster Pro</h2>
+        </div>
+        <div class="nav-right">
+            <button id="themeBtn">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+    <main class="container">
+        <section class="hero">
+            <h1>
+                Stay Organized.
+                <br>
+                Stay Productive.
+            </h1>
+            <p>
+                Plan your daily work, complete important tasks,
+                and boost your productivity with an elegant
+                task management dashboard.
+            </p>
+        </section>
+        <section class="task-card">
+            <div class="card-title">
+                <h2>
+                    <i class="fa-solid fa-plus"></i>
+                    Add New Task
+                </h2>
+            </div>
+            <form id="taskForm">
+                <div class="input-group">
+                    <input type="text" id="taskInput" placeholder="Enter your task..." required>
+                </div>
+                <div class="input-group">
+                    <textarea id="taskDescription" rows="4" placeholder="Task description..."></textarea>
+                </div>
+                <div class="row">
+                    <div class="input-group">
+                        <label for="dueDate">
+                            Due Date
+                        </label>
+                        <input type="date" id="dueDate">
+                    </div>
+                    <div class="input-group">
+                        <label for="priority">
+                            Priority
+                        </label>
+                        <select id="priority">
+                            <option value="Low">
+                                Low
+                            </option>
+
+                            <option value="Medium">
+
+                                Medium
+
+                            </option>
+
+                            <option value="High">
+
+                                High
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <button class="add-btn" type="submit">
+
+                    <i class="fa-solid fa-circle-plus"></i>
+
+                    Add Task
+
+                </button>
+
+            </form>
+
+        </section>
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="icon blue">
+
+                    <i class="fa-solid fa-list"></i>
+
+                </div>
+
+                <div>
+
+                    <h2 id="totalTasks">
+
+                        0
+
+                    </h2>
+
+                    <p>Total Tasks</p>
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="icon green">
+
+                    <i class="fa-solid fa-check"></i>
+
+                </div>
+
+                <div>
+
+                    <h2 id="completedTasks">
+
+                        0
+
+                    </h2>
+
+                    <p>Completed</p>
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="icon orange">
+
+                    <i class="fa-solid fa-hourglass-half"></i>
+
+                </div>
+
+                <div>
+
+                    <h2 id="pendingTasks">
+
+                        0
+
+                    </h2>
+
+                    <p>Pending</p>
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="icon red">
+
+                    <i class="fa-solid fa-star"></i>
+
+                </div>
+
+                <div>
+
+                    <h2 id="highPriority">
+
+                        0
+
+                    </h2>
+
+                    <p>High Priority</p>
+
+                </div>
+
+            </div>
+
+        </section>
+        <section class="search-section">
+
+            <input type="text" id="searchTask" placeholder="Search task...">
+
+        </section>
+        <section class="filter-buttons">
+
+            <button class="filter active">
+
+                All
+
+            </button>
+
+            <button class="filter">
+
+                Pending
+
+            </button>
+
+            <button class="filter">
+
+                Completed
+
+            </button>
+
+            <button class="filter">
+
+                High Priority
+
+            </button>
+
+        </section>
+        <section class="task-container">
+
+            <h2>
+
+                My Tasks
+
+            </h2>
+
+            <div id="taskList">
+            </div>
+
+        </section>
+        <div class="empty-state" id="emptyState">
+
+            <i class="fa-solid fa-clipboard-list"></i>
+
+            <h2>No Tasks Available</h2>
+
+            <p>
+
+                Your task list is empty.
+                Add your first task to get started.
+
+            </p>
+
+        </div>
+
+        <div class="modal" id="editModal">
+
+            <div class="modal-content">
+
+                <span class="close-modal">
+
+                    &times;
+
+                </span>
+
+                <h2>
+
+                    Edit Task
+
+                </h2>
+
+                <input type="text" id="editTitle" placeholder="Task Title">
+
+                <textarea id="editDescription" rows="5" placeholder="Task Description"></textarea>
+
+                <input type="date" id="editDate">
+
+                <select id="editPriority">
+
+                    <option>
+
+                        Low
+
+                    </option>
+
+                    <option>
+
+                        Medium
+
+                    </option>
+
+                    <option>
+
+                        High
+
+                    </option>
+
+                </select>
+
+                <button id="saveTask">
+
+                    Save Changes
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="delete-modal" id="deleteModal">
+
+            <div class="delete-box">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <h2>
+
+                    Delete Task?
+
+                </h2>
+
+                <p>
+
+                    This action cannot be undone.
+
+                </p>
+
+                <div class="delete-buttons">
+
+                    <button id="cancelDelete">
+
+                        Cancel
+
+                    </button>
+
+                    <button id="confirmDelete">
+
+                        Delete
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div id="toast">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <span>
+
+                Task Added Successfully
+
+            </span>
+
+        </div>
+        <button id="scrollTop">
+
+            <i class="fa-solid fa-arrow-up"></i>
+
+        </button>
+        <footer>
+
+            <h3>
+
+                TaskMaster Pro
+
+            </h3>
+
+            <p>
+
+                Designed with ❤️ using HTML, CSS & JavaScript
+
+            </p>
+
+            <div class="social-links">
+
+                <a href="#">
+
+                    <i class="fab fa-github"></i>
+
+                </a>
+
+                <a href="#">
+
+                    <i class="fab fa-linkedin"></i>
+
+                </a>
+
+                <a href="#">
+
+                    <i class="fab fa-twitter"></i>
+
+                </a>
+
+                <a href="#">
+
+                    <i class="fab fa-instagram"></i>
+
+                </a>
+
+            </div>
+
+            <p class="copyright">
+
+                © 2026 TaskMaster Pro.
+                All Rights Reserved.
+
+            </p>
+
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
